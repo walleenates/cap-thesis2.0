@@ -39,6 +39,62 @@
 
 /*dashboardcss*/
 /* Overall dashboard container */
+/* Existing styles... */
+
+.profile {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.profile img {
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile span {
+  margin-right: 10px;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background: #f0f0f0;
+}
+
 .dashboard {
   display: flex;
   height: 100vh;

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
+const AdminDashboard = ({ userName, onLogout }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-const AdminDashboard = () => {
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
   return (
     <div className="dashboard">
       <aside className="sidebar">
@@ -30,7 +33,16 @@ const AdminDashboard = () => {
             <input type="text" placeholder="Search..." />
             <div className="profile">
               <img src="/path/to/profile.png" alt="" />
-              <span>Admin user</span>
+              <span>{userName}</span>
+              <button className="dropdown-toggle" onClick={toggleDropdown}>
+                &#9662;
+              </button>
+              {dropdownOpen && (
+                <div className="dropdown-menu">
+                  <Link to="/account-settings">Account Settings</Link>
+                  <button onClick={onLogout}>Logout</button>
+                </div>
+              )}
             </div>
           </div>
         </header>
