@@ -1,4 +1,5 @@
 import React from 'react';
+import '../dashboard/ManageUser.css';
 
 const ManageUser = () => {
   return (
