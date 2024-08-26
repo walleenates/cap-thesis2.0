@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import SignIn from './signin';
 import Dashboard from './dashboard';
 import SignUp from './signup';
+import ForgotPassword from './ForgotPassword';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +20,7 @@ function App() {
     setUserName('');
   };
 
-  return (
+  return (  
     <div className="App">
       <Router>
         <Routes>
@@ -43,6 +44,7 @@ function App() {
             path="/" 
             element={<Navigate to={isLoggedIn ? "/dashboard" : "/signin"} />} 
           />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </Router>
     </div>
