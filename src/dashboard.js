@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Dashboard = ({ userName, onLogout }) => {
   return (
     <div className="dashboard">
