@@ -18,7 +18,9 @@ function SignUp() {
       <div className="sign-up-left">
         <div className="logo-container">
           <img src="spclogo.png" alt="Logo" className="logo" />
-          <div className="system-namesignup">SIMS</div>
+          <div className="system-name">
+          <span style={{ fontSize: '150px', fontWeight: 'normal', fontFamily: 'Arial, sans-serif' }}>SIMS</span>
+            </div>
         </div>
       </div>
       <div className="sign-up-right">
