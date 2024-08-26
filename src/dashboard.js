@@ -32,7 +32,7 @@ const AdminDashboard = ({ userName, onLogout }) => {
           <div className="search-and-profile">
             <input type="text" placeholder="Search..." />
             <div className="profile">
-              <img src="/path/to/profile.png" alt="" />
+              <img src="userdashboard.png" alt="" />
               <span>{userName}</span>
               <button className="dropdown-toggle" onClick={toggleDropdown}>
                 &#9662;
@@ -46,7 +46,7 @@ const AdminDashboard = ({ userName, onLogout }) => {
             </div>
           </div>
         </header>
-        <section className="cards">
+        <section className="cards"> 
           <div className="card">
             <h3>ITEMS</h3>
             <p>Placeholder for items</p>
