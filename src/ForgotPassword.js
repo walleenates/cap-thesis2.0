@@ -8,7 +8,8 @@ function ForgotPassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add forgot password logic here
+    // Implement the forgot password logic here
+    // For demonstration, we navigate to the sign-in page
     navigate('/signin');
   };
 
@@ -19,7 +20,7 @@ function ForgotPassword() {
           <img src="spclogo.png" alt="Logo" className="logo" />
           <div className="system-name">
             <span style={{ fontSize: '150px', fontWeight: 'normal', fontFamily: 'Arial, sans-serif' }}>SIMS</span>
-            </div>
+          </div>
         </div>
       </div>
       <div className="forgot-password-right">

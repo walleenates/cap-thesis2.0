@@ -44,7 +44,10 @@ function App() {
             path="/" 
             element={<Navigate to={isLoggedIn ? "/dashboard" : "/signin"} />} 
           />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route 
+            path="/forgot-password" 
+            element={<ForgotPassword />} 
+          />
         </Routes>
       </Router>
     </div>
