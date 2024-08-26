@@ -18,7 +18,7 @@ function SignUp() {
       <div className="sign-up-left">
         <div className="logo-container">
           <img src="spclogo.png" alt="Logo" className="logo" />
-          <div className="system-name">Your System</div>
+          <div className="system-namesignup">SIMS</div>
         </div>
       </div>
       <div className="sign-up-right">
