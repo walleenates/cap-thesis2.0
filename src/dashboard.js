@@ -69,6 +69,7 @@ const AdminDashboard = ({ userName, onLogout }) => {
                 <div className="dropdown-menu">
                   <Link to="/account-settings">Account Settings</Link>
                   <button onClick={onLogout}>Logout</button>
+                  <ManageItem />
                 </div>
               )}
             </div>
