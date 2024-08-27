@@ -15,16 +15,44 @@ const AdminDashboard = ({ userName, onLogout }) => {
           <h1>SIMS</h1>
         </div>
         <nav>
-          <ul>
-            <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/manage-user">Manage User</Link></li>
-            <li><Link to="/manage-item">Manage Item</Link></li>
-            <li><Link to="/reports">Reports</Link></li>
-            <li><Link to="/settings">Settings</Link></li>
-            <li><Link to="/scanner">Scanner</Link></li>
-            <li><Link to="/request-form">Request Form</Link></li>
-          </ul>
-        </nav>
+      <ul>
+        <li>
+          <Link to="/dashboard">
+            <img src="dashboard.png" alt="Dashboard" className="icon" /> Dashboard
+          </Link>
+        </li>
+        <li>
+          <Link to="/manage-user">
+            <img src="manage-user-icon.png" alt="Manage User" className="icon" /> 
+          </Link>
+        </li>
+        <li>
+          <Link to="/manage-item">
+            <img src="manage-item-icon.png" alt="Manage Item" className="icon" /> 
+          </Link>
+        </li>
+        <li>
+          <Link to="/reports">
+            <img src="reports-icon.png" alt="Reports" className="icon" /> 
+          </Link>
+        </li>
+        <li>
+          <Link to="/settings">
+            <img src="settings-icon.png" alt="Settings" className="icon" /> 
+          </Link>
+        </li>
+        <li>
+          <Link to="/scanner">
+            <img src="scanner-icon.png" alt="Scanner" className="icon" />
+          </Link>
+        </li>
+        <li>
+          <Link to="/request-form">
+            <img src="request-form-icon.png" alt="Purchased Request" className="icon" />   
+          </Link>
+        </li>
+      </ul>
+    </nav>
       </aside>
       <main className="main-content">
         <header>

@@ -46,7 +46,7 @@ function SignUp() {
               placeholder="Enter your password" 
             />
           </div>
-          <button type="submit" className="submit-button">Sign Up</button>
+          <center><button type="submit" className="submit-button">Sign Up</button></center>
           <div className="new-account">
             <span>Already have an account? <a href="/signin" className="create-account">Sign in</a></span>
           </div>

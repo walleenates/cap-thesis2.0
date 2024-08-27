@@ -40,6 +40,33 @@
 /*dashboardcss*/
 /* Overall dashboard container */
 /* Existing styles... */
+/* globals.css or your relevant CSS file */
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin-bottom: 10px;
+}
+
+nav ul li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333; /* Adjust color as needed */
+}
+
+nav ul li a .icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+nav ul li a:hover {
+  color: #007bff; /* Change color on hover if desired */
+}
 
 .profile {
   display: flex;

@@ -36,7 +36,7 @@ function ForgotPassword() {
               placeholder="Enter your email" 
             />
           </div>
-          <button type="submit" className="submit-button">Submit</button>
+          <center><button type="submit" className="submit-button">Submit</button></center>
           <div className="back-to-signin">
             <span>Remembered your password? <a href="/signin" className="back-to-signin-link">Sign in</a></span>
           </div>

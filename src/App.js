@@ -19,11 +19,7 @@ function App() {
     setIsLoggedIn(false);
     setUserName('');
   };
-  const users = [
-    { id: 1, username: 'John Doe', email: 'john@example.com' },
-    { id: 2, username: 'Jane Doe', email: 'jane@example.com' },
-    // ...
-  ];
+  
 
   return (  
     <div className="App">
