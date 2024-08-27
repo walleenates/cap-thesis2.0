@@ -5,6 +5,8 @@ import SignIn from './signin';
 import Dashboard from './dashboard';
 import SignUp from './signup';
 import ForgotPassword from './ForgotPassword';
+import ManageItem from './ManageItem';
+import AdminDashboard from './dashboard';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,7 +51,13 @@ function App() {
             path="/forgot-password" 
             element={<ForgotPassword />} 
           />
+          
         </Routes>
+        <Routes>
+      <Route path="/admin-dashboard" element={<AdminDashboard />} />
+      <Route path="/manage-item" element={<ManageItem />} />
+      {/* Define other routes here */}
+    </Routes>
       </Router>
       
     </div>
