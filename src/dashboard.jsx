@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ManageItem from './ManageItem'; 
-
 const AdminDashboard = ({ userName, onLogout }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -27,9 +25,12 @@ const AdminDashboard = ({ userName, onLogout }) => {
               </Link>
             </li>
             <li>
-              <Link to="/manage-item">
-                <img src="manage-item-icon.png" alt="Manage Item" className="icon" /> 
+              <Link to="/ManageItem">
+                <img src="manage-item-icon.png" alt="Manage Item" className="icon" />
+                
+                 
               </Link>
+              
             </li>
             <li>
               <Link to="/reports">
@@ -69,7 +70,7 @@ const AdminDashboard = ({ userName, onLogout }) => {
                 <div className="dropdown-menu">
                   <Link to="/account-settings">Account Settings</Link>
                   <button onClick={onLogout}>Logout</button>
-                  <ManageItem />
+                  
                 </div>
               )}
             </div>

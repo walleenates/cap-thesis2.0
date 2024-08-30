@@ -5,7 +5,7 @@ import SignIn from './signin';
 import Dashboard from './dashboard';
 import SignUp from './signup';
 import ForgotPassword from './ForgotPassword';
-import ManageItem from './ManageItem';
+import ManageItem from './components/ManageItem';
 import AdminDashboard from './dashboard';
 
 function App() {
@@ -39,6 +39,14 @@ function App() {
             path="/dashboard" 
             element={isLoggedIn ? (
               <Dashboard userName={userName} onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/signin" />
+            )} 
+          />
+          <Route 
+            path="/ManageItem" 
+            element={isLoggedIn ? (
+              <ManageItem  />
             ) : (
               <Navigate to="/signin" />
             )} 

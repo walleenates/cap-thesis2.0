@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './ManageItem.css';
 
 const ManageItem = () => {
   const [items, setItems] = useState([]);
@@ -35,8 +36,11 @@ const ManageItem = () => {
   };
 
   return (
+    
     <div className="manage-item-container">
-      <button onClick={() => navigate('/dashboard')} className="back-button">Back to Dashboard</button>
+      <button onClick={() => navigate('/dashboard')} className="back-button">
+        Back to Dashboard
+      </button>
       <h2>Manage Items</h2>
       <div className="item-form">
         <input
@@ -45,11 +49,12 @@ const ManageItem = () => {
           onChange={(e) => setNewItem(e.target.value)}
           placeholder="Add new item"
         />
-        <button onClick={handleAddItem}>Add Item</button>
+        <button onClick={handleAddItem} className="add-button">Add Item</button>
       </div>
+      
       <ul className="item-list">
         {items.map((item, index) => (
-          <li key={index}>
+          <li key={index} className="item">
             {editingItem === index ? (
               <div className="edit-container">
                 <input
@@ -57,13 +62,15 @@ const ManageItem = () => {
                   value={editValue}
                   onChange={(e) => setEditValue(e.target.value)}
                 />
-                <button onClick={() => handleSaveEdit(index)}>Save</button>
+                <button onClick={() => handleSaveEdit(index)} className="save-button">Save</button>
               </div>
             ) : (
-              <span>{item.text}</span>
+              <span className="item-text">{item.text}</span>
             )}
-            <button onClick={() => handleEditItem(index)}>Edit</button>
-            <button onClick={() => handleDeleteItem(index)}>Delete</button>
+            <div className="item-actions">
+              <button onClick={() => handleEditItem(index)} className="edit-button">Edit</button>
+              <button onClick={() => handleDeleteItem(index)} className="delete-button">Delete</button>
+            </div>
           </li>
         ))}
       </ul>
