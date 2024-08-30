@@ -12,7 +12,7 @@ function SignIn({ onLogin }) {
     e.preventDefault();
     // Add your authentication logic here
     onLogin(username);
-    navigate('/dashboard');
+    navigate('/');
   };
 
   return (

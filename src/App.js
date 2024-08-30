@@ -7,6 +7,8 @@ import SignUp from './signup';
 import ForgotPassword from './ForgotPassword';
 import ManageItem from './components/ManageItem';
 import AdminDashboard from './dashboard';
+import ManageUser from './ManageUser';
+import HomePage from './pages/HomePage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,6 +29,14 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+        <Route 
+            path="/" 
+            element={isLoggedIn ? (
+              <HomePage />
+            ) : (
+              <Navigate to="/signin" />
+            )} 
+          />
           <Route 
             path="/signin" 
             element={<SignIn onLogin={handleLogin} />} 
@@ -35,6 +45,7 @@ function App() {
             path="/signup" 
             element={<SignUp />} 
           />
+          {/* 
           <Route 
             path="/dashboard" 
             element={isLoggedIn ? (
@@ -59,11 +70,14 @@ function App() {
             path="/forgot-password" 
             element={<ForgotPassword />} 
           />
+          <Route path="/manage-user" element={<ManageUser/>} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/manage-item" element={<ManageItem />} /> */}
           
         </Routes>
         <Routes>
-      <Route path="/admin-dashboard" element={<AdminDashboard />} />
-      <Route path="/manage-item" element={<ManageItem />} />
+     
+      
       {/* Define other routes here */}
     </Routes>
       </Router>
