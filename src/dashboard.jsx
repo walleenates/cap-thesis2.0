@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-const AdminDashboard = ({ userName, onLogout }) => {
+import { Link, useNavigate } from 'react-router-dom';
+
+const AdminDashboard = ({ userName }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
+  const navigate = useNavigate(); // Get the navigate function from useNavigate
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
-
-
-  
+  const handleLogout = () => {
+    // Add any logout logic here if needed
+    navigate('/signin');
+  };
 
   return (
     <div className="dashboard">
-      
       <main className="main-content">
         <header>
           <h2>Admin Dashboard</h2>
@@ -27,14 +28,13 @@ const AdminDashboard = ({ userName, onLogout }) => {
               {dropdownOpen && (
                 <div className="dropdown-menu">
                   <Link to="/account-settings">Account Settings</Link>
-                  <button onClick={onLogout}>Logout</button>
-                  
+                  <button onClick={handleLogout}>Logout</button>
                 </div>
               )}
             </div>
           </div>
         </header>
-        <section className="cards"> 
+        <section className="cards">
           <div className="card">
             <h3>ITEMS</h3>
             <p>Placeholder for items</p>
@@ -52,6 +52,5 @@ const AdminDashboard = ({ userName, onLogout }) => {
     </div>
   );
 };
-
 
 export default AdminDashboard;

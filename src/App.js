@@ -2,12 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import SignIn from './signin';
-import Dashboard from './dashboard';
 import SignUp from './signup';
-import ForgotPassword from './ForgotPassword';
-import ManageItem from './components/ManageItem';
-import AdminDashboard from './dashboard';
-import ManageUser from './ManageUser';
 import HomePage from './pages/HomePage';
 
 function App() {

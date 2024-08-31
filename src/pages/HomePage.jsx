@@ -2,9 +2,7 @@ import React, {  useState } from 'react'
 import AdminDashboard from '../dashboard'
 import ManageUser from '../ManageUser'
 import ManageItem from '../components/ManageItem'
-import { Link } from 'react-router-dom'
-
-import './HomePage.css'
+import './HomePage.css';
 
 const HomePage = () => {
     const [activeComponent, setActiveComponent] = useState('dashboard')
