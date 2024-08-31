@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import './ManageUser.css'; // Ensure this CSS file has the necessary styles
 
 const ManageUser = () => {
@@ -6,6 +7,7 @@ const ManageUser = () => {
   const [newUser, setNewUser] = useState('');
   const [editingIndex, setEditingIndex] = useState(null);
   const [editValue, setEditValue] = useState('');
+
 
   const handleAddUser = () => {
     if (newUser.trim()) {
@@ -35,7 +37,6 @@ const ManageUser = () => {
 
   return (
     <div className="manage-user-container">
-      <button onClick={() => window.history.back()} className="back-button">Back</button>
       <h2>Manage Users</h2>
       <div className="user-form">
         <input

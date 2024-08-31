@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import './ManageItem.css';
 
 const ManageItem = () => {
@@ -7,7 +7,7 @@ const ManageItem = () => {
   const [newItem, setNewItem] = useState('');
   const [editingItem, setEditingItem] = useState(null);
   const [editValue, setEditValue] = useState('');
-  const navigate = useNavigate();
+  
 
   const handleAddItem = () => {
     if (newItem.trim()) {
@@ -38,9 +38,7 @@ const ManageItem = () => {
   return (
     
     <div className="manage-item-container">
-      <button onClick={() => navigate('/dashboard')} className="back-button">
-        Back to Dashboard
-      </button>
+     
       <h2>Manage Items</h2>
       <div className="item-form">
         <input

@@ -128,16 +128,7 @@ nav ul li a:hover {
 }
 
 /* Sidebar styles */
-.sidebar {
-  width: 250px;
-  background-color: #660809;
-  color: #ecf0f1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
+
 
 .sidebar .logo {
   display: flex;

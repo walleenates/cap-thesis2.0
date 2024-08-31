@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import SignIn from './signin';
 import SignUp from './signup';
+import ForgotPassword from './ForgotPassword';
+import AdminDashboard from './dashboard';
+import ManageUser from './ManageUser';
+import ManageItem from './components/ManageItem';
 import HomePage from './pages/HomePage';
 
 function App() {
@@ -18,19 +22,19 @@ function App() {
     setIsLoggedIn(false);
     setUserName('');
   };
-  
 
-  return (  
+  return (
     <div className="App">
+    {userName}
       <Router>
         <Routes>
-        <Route 
+          <Route 
             path="/" 
             element={isLoggedIn ? (
               <HomePage />
             ) : (
               <Navigate to="/signin" />
-            )} 
+            )}
           />
           <Route 
             path="/signin" 
@@ -40,43 +44,36 @@ function App() {
             path="/signup" 
             element={<SignUp />} 
           />
-          {/* 
-          <Route 
-            path="/dashboard" 
-            element={isLoggedIn ? (
-              <Dashboard userName={userName} onLogout={handleLogout} />
-            ) : (
-              <Navigate to="/signin" />
-            )} 
-          />
-          <Route 
-            path="/ManageItem" 
-            element={isLoggedIn ? (
-              <ManageItem  />
-            ) : (
-              <Navigate to="/signin" />
-            )} 
-          />
-          <Route 
-            path="/" 
-            element={<Navigate to={isLoggedIn ? "/dashboard" : "/signin"} />} 
-          />
           <Route 
             path="/forgot-password" 
             element={<ForgotPassword />} 
           />
-          <Route path="/manage-user" element={<ManageUser/>} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/manage-item" element={<ManageItem />} /> */}
-          
+          <Route 
+            path="/dashboard" 
+            element={isLoggedIn ? (
+              <AdminDashboard handleLogout={handleLogout} />
+            ) : (
+              <Navigate to="/signin" />
+            )}
+          />
+          <Route 
+            path="/manage-item" 
+            element={isLoggedIn ? (
+              <ManageItem />
+            ) : (
+              <Navigate to="/signin" />
+            )}
+          />
+          <Route 
+            path="/manage-user" 
+            element={isLoggedIn ? (
+              <ManageUser />
+            ) : (
+              <Navigate to="/signin" />
+            )}
+          />
         </Routes>
-        <Routes>
-     
-      
-      {/* Define other routes here */}
-    </Routes>
       </Router>
-      
     </div>
   );
 }
