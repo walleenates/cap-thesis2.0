@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const AdminDashboard = ({ userName }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const navigate = useNavigate(); // Get the navigate function from useNavigate
+  const navigate = useNavigate();
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
@@ -20,8 +20,8 @@ const AdminDashboard = ({ userName }) => {
           <div className="search-and-profile">
             <input type="text" placeholder="Search..." />
             <div className="profile">
-              <img src="userdashboard.png" alt="" />
-              <span>{userName}</span>
+              <img src="userdashboard.png" alt="Profile Icon" className="profile-icon" />
+              <span className="user-name">{userName}</span>
               <button className="dropdown-toggle" onClick={toggleDropdown}>
                 &#9662;
               </button>

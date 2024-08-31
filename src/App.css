@@ -184,11 +184,11 @@ nav ul li a:hover {
 }
 
 /* Main content styles */
-.main-content {
-  flex: 1;
-  padding: 20px;
-  background-color: #ecf0f1;
-  overflow-y: auto;
+.main-content header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .main-content header {
@@ -217,8 +217,15 @@ nav ul li a:hover {
 .profile {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
+
+.profile-icon {
+  width: 24px; /* Adjust as needed */
+  height: 24px; /* Adjust as needed */
+  margin-right: 8px; /* Space between icon and text */
+}
 .profile img {
   width: 40px;
   height: 40px;
@@ -228,6 +235,7 @@ nav ul li a:hover {
 
 .profile span {
   font-size: 16px;
+  margin-right: 10px;
 }
 
 /* Card styles */

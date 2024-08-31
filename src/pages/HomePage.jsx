@@ -45,7 +45,7 @@ const HomePage = () => {
           Settings
         </button>
         <button onClick={() => handleChangeActiveComponent("reports")} className="sidebar-button">
-          <img src="report.png" alt="Reports Icon" className="sidebar-icon" />
+          <img src="reports.png" alt="Reports Icon" className="sidebar-icon" />
           Reports
         </button>
         <button onClick={() => handleChangeActiveComponent("scanner")} className="sidebar-button">

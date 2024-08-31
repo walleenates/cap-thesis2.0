@@ -11,7 +11,7 @@ function SignIn({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your authentication logic here
-    onLogin(username);
+    onLogin();
     navigate('/');
   };
 
