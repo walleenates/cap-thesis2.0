@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import JsBarcode from 'jsbarcode';
 
 import './ManageItem.css';
 
@@ -7,11 +8,20 @@ const ManageItem = () => {
   const [newItem, setNewItem] = useState('');
   const [editingItem, setEditingItem] = useState(null);
   const [editValue, setEditValue] = useState('');
-  
+
+  const generateBarcode = (text) => {
+    const canvas = document.createElement('canvas');
+    JsBarcode(canvas, text, { format: 'CODE128' });
+    return canvas.toDataURL('image/png');
+  };
 
   const handleAddItem = () => {
     if (newItem.trim()) {
-      setItems([...items, { text: newItem }]);
+      const newItemWithBarcode = {
+        text: newItem,
+        barcode: generateBarcode(newItem + Date.now()), // Generate unique barcode using item text + timestamp
+      };
+      setItems([...items, newItemWithBarcode]);
       setNewItem('');
     }
   };
@@ -36,9 +46,7 @@ const ManageItem = () => {
   };
 
   return (
-    
     <div className="manage-item-container">
-     
       <h2>Manage Items</h2>
       <div className="item-form">
         <input
@@ -49,7 +57,6 @@ const ManageItem = () => {
         />
         <button onClick={handleAddItem} className="add-button">Add Item</button>
       </div>
-      
       <ul className="item-list">
         {items.map((item, index) => (
           <li key={index} className="item">
@@ -63,7 +70,10 @@ const ManageItem = () => {
                 <button onClick={() => handleSaveEdit(index)} className="save-button">Save</button>
               </div>
             ) : (
-              <span className="item-text">{item.text}</span>
+              <>
+                <span className="item-text">{item.text}</span>
+                <img src={item.barcode} alt="Barcode" className="barcode-image" />
+              </>
             )}
             <div className="item-actions">
               <button onClick={() => handleEditItem(index)} className="edit-button">Edit</button>
