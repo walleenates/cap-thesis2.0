@@ -1,9 +1,11 @@
+// src/pages/HomePage.js
 import React, { useState } from 'react';
 import AdminDashboard from '../dashboard';
 import ManageUser from '../ManageUser';
 import ManageItem from '../components/ManageItem';
-import '../pages/HomePage.css';
 import RequestForm from '../components/RequestForm';
+import Reports from '../components/Reports';
+import '../pages/HomePage.css';
 
 const HomePage = () => {
   const [activeComponent, setActiveComponent] = useState('dashboard');
@@ -18,7 +20,6 @@ const HomePage = () => {
         <div className="logo">
           <h1>SIMS</h1>
           <img src="spclogo.png" alt="Logo" />
-
         </div>
         <button onClick={() => handleChangeActiveComponent("dashboard")}>
           <img src="dashboard.png" alt="Dashboard Icon" className="sidebar-icon" />
@@ -28,9 +29,8 @@ const HomePage = () => {
           <img src="userdash.png" alt="Manage User Icon" className="sidebar-icon" />
           Manage User
         </button>
-
         <button onClick={() => handleChangeActiveComponent("manage-item")} className="sidebar-button">
-          <img src="manageitem.png" alt="" className="sidebar-icon" />
+          <img src="manageitem.png" alt="Manage Item Icon" className="sidebar-icon" />
           Manage Item
         </button>
         <button onClick={() => handleChangeActiveComponent("request-form")} className="sidebar-button">
@@ -59,7 +59,8 @@ const HomePage = () => {
         {activeComponent === 'manage-user' && <ManageUser />}
         {activeComponent === 'manage-item' && <ManageItem />}
         {activeComponent === 'request-form' && <RequestForm />}
-        
+        {activeComponent === 'reports' && <Reports />}
+        {/* Add other components as needed */}
       </div>
     </div>
   );
