@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import './RequestForm.css';
 
-
 const RequestForm = () => {
   const [requestData, setRequestData] = useState('');
   const [file, setFile] = useState(null);
