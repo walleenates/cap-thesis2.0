@@ -3,6 +3,7 @@ import AdminDashboard from '../dashboard';
 import ManageUser from '../ManageUser';
 import ManageItem from '../components/ManageItem';
 import '../pages/HomePage.css';
+import RequestForm from '../components/RequestForm';
 
 const HomePage = () => {
   const [activeComponent, setActiveComponent] = useState('dashboard');
@@ -57,6 +58,7 @@ const HomePage = () => {
         {activeComponent === 'dashboard' && <AdminDashboard />}
         {activeComponent === 'manage-user' && <ManageUser />}
         {activeComponent === 'manage-item' && <ManageItem />}
+        {activeComponent === 'request-form' && <RequestForm />}
       </div>
     </div>
   );
