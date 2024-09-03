@@ -1,29 +1,25 @@
 import React, { useState } from 'react';
-import JsBarcode from 'jsbarcode';
-
 import './ManageItem.css';
 
 const ManageItem = () => {
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
+  const [selectedCollege, setSelectedCollege] = useState(''); // State for selected college
   const [editingItem, setEditingItem] = useState(null);
   const [editValue, setEditValue] = useState('');
-  const [showList, setShowList] = useState(true); // State to control visibility of the list
+  const [showList, setShowList] = useState(true);
 
-  const generateBarcode = (text) => {
-    const canvas = document.createElement('canvas');
-    JsBarcode(canvas, text, { format: 'CODE128' });
-    return canvas.toDataURL('image/png');
-  };
+  const colleges = ['CCS', 'COC', 'CED', 'CBA', 'BED', 'COE']; // Predefined colleges
 
   const handleAddItem = () => {
-    if (newItem.trim()) {
-      const newItemWithBarcode = {
+    if (newItem.trim() && selectedCollege) {
+      const newItemWithCollege = {
         text: newItem,
-        barcode: generateBarcode(newItem + Date.now()), // Generate unique barcode using item text + timestamp
+        college: selectedCollege, // Add selected college to the item
       };
-      setItems([...items, newItemWithBarcode]);
+      setItems([...items, newItemWithCollege]);
       setNewItem('');
+      setSelectedCollege(''); // Reset college selection after adding
     }
   };
 
@@ -60,6 +56,16 @@ const ManageItem = () => {
           onChange={(e) => setNewItem(e.target.value)}
           placeholder="Add new item"
         />
+        <select
+          value={selectedCollege}
+          onChange={(e) => setSelectedCollege(e.target.value)}
+          className="college-select"
+        >
+          <option value="" disabled>Select College</option>
+          {colleges.map((college) => (
+            <option key={college} value={college}>{college}</option>
+          ))}
+        </select>
         <button onClick={handleAddItem} className="add-button">Add Item</button>
       </div>
       <button onClick={toggleListVisibility} className="toggle-button">
@@ -81,7 +87,7 @@ const ManageItem = () => {
               ) : (
                 <>
                   <span className="item-text">{item.text}</span>
-                  <img src={item.barcode} alt="Barcode" className="barcode-image" />
+                  <span className="item-college">({item.college})</span>
                 </>
               )}
               <div className="item-actions">

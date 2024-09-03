@@ -1,10 +1,10 @@
-// src/pages/HomePage.js
 import React, { useState } from 'react';
 import AdminDashboard from '../dashboard';
 import ManageUser from '../ManageUser';
 import ManageItem from '../components/ManageItem';
 import RequestForm from '../components/RequestForm';
 import Reports from '../components/Reports';
+import ApprovedPurchaseRequest from '../components/ApprovedPurchaseRequest';  // Import the new component
 import '../pages/HomePage.css';
 
 const HomePage = () => {
@@ -25,21 +25,15 @@ const HomePage = () => {
           <img src="dashboard.png" alt="Dashboard Icon" className="sidebar-icon" />
           Dashboard
         </button>
-        <button onClick={() => handleChangeActiveComponent("manage-user")} className="sidebar-button">
-          <img src="userdash.png" alt="Manage User Icon" className="sidebar-icon" />
-          Manage User
-        </button>
+       
         <button onClick={() => handleChangeActiveComponent("manage-item")} className="sidebar-button">
           <img src="manageitem.png" alt="Manage Item Icon" className="sidebar-icon" />
           Manage Item
         </button>
-        <button onClick={() => handleChangeActiveComponent("request-form")} className="sidebar-button">
-          <img src="requestform.png" alt="Request Form Icon" className="sidebar-icon" />
-          Request Form
-        </button>
+       
         <button onClick={() => handleChangeActiveComponent("purchased-request")} className="sidebar-button">
           <img src="prequest.png" alt="Purchased Request Icon" className="sidebar-icon" />
-          Purchased Request
+          Approved Purchased Request
         </button>
         <button onClick={() => handleChangeActiveComponent("settings")} className="sidebar-button">
           <img src="setting.png" alt="Settings Icon" className="sidebar-icon" />
@@ -59,8 +53,8 @@ const HomePage = () => {
         {activeComponent === 'manage-user' && <ManageUser />}
         {activeComponent === 'manage-item' && <ManageItem />}
         {activeComponent === 'request-form' && <RequestForm />}
+        {activeComponent === 'purchased-request' && <ApprovedPurchaseRequest />} {/* Add the new component */}
         {activeComponent === 'reports' && <Reports />}
-        {/* Add other components as needed */}
       </div>
     </div>
   );
