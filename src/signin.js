@@ -1,19 +1,32 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth, handleLogin } from './firebase';
 
 
 function SignIn({ onLogin }) {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your authentication logic here
-    onLogin();
-    navigate('/');
+  
+
+
+  const handleSubmit =  () => {
+    console.log(email)
+     if(email && password){
+      handleLogin(email, password)
+      navigate('/')
+     } else {
+      console.log('PLease fill in fields')
+     }
   };
+
+
+
+  if(auth.currentUser){
+    navigate('/')
+  }
 
   return (
     <div className="signin-container">
@@ -30,14 +43,14 @@ function SignIn({ onLogin }) {
         <h2>Sign In</h2>
         <form className="signin-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username"></label>
+            <label htmlFor="email"></label>
             <input 
-              type="text" 
-              id="username" 
-              name="username" 
-              placeholder="Enter your username" 
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="Enter your email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
               required 
             />
           </div>

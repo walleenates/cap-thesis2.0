@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { logoutUser } from './firebase';
 
 const AdminDashboard = ({ userName }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -8,7 +9,7 @@ const AdminDashboard = ({ userName }) => {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const handleLogout = () => {
-    // Add any logout logic here if needed
+    logoutUser()
     navigate('/signin');
   };
 

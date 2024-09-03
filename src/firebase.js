@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore/lite';
-import { getAuth, signInWithCredential } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithCredential, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 
 
@@ -26,17 +26,38 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 
-export const handleLogin = (username, password) => {
-    signInWithCredential(auth, {username, password})
+export const handleLogin = (email, password) => {
+    try{
+        signInWithEmailAndPassword(auth, {email, password})
+    }catch(error){
+        console.log('Error in:', error.message)
+    }
 }
 
-export const createUserAccount = (email, username, password, confirmPassword) => {
-    if(password.length < 7){
+export const createUserAccount = (username, email, password, confirmPassword) => {
+    if(password.length > 7){
         console.log("Passowrd must be longer than 7 characters")
-    }
-    if(password !== confirmPassword){
+    
+    if(password === confirmPassword){
+        try{
+            createUserWithEmailAndPassword(auth, email, password)
+            console.log("Create Account succcessful")
+        }catch(error){
+            console.log(error)
+        }
+    } else {
         console.log("Password does not match")
     }
-    createUserAccount(auth, email, username, password)
-    console.log("Create Account succcessful")
+}
+    
+}
+
+export const logoutUser = () => {
+    try{
+        if(auth.currentUser){
+            auth.signOut()
+        }
+    }catch(error){
+        console.log("Error in: ", error)
+    }
 }

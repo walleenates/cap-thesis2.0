@@ -18,6 +18,7 @@ function SignUp() {
 
   const handleSignIn = async () => {
     if(name && email && password && confirmPassword){
+      console.log(password, confirmPassword)
       await createUserAccount(name, email, password, confirmPassword)
     }
   }
@@ -50,13 +51,13 @@ function SignUp() {
               value={name} 
               onChange={(e) => setName(e.target.value)} 
               placeholder="Enter your username" 
-            />
+            /> <label htmlFor="email">email</label>
           <input 
               type="email" 
               id="email" 
-              value={name} 
+              value={email} 
               onChange={(e) => setEmail(e.target.value)} 
-              placeholder="Enter your username" 
+              placeholder="Enter your email" 
             />
       
             <label htmlFor="password">Password</label>
@@ -71,7 +72,7 @@ function SignUp() {
             <input 
               type="password" 
               id="confirm-password" 
-              value={password} 
+              value={confirmPassword} 
               onChange={(e) => setConfirmPassword(e.target.value)} 
               placeholder="Confirm password" 
             />
