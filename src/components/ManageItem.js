@@ -8,6 +8,7 @@ const ManageItem = () => {
   const [newItem, setNewItem] = useState('');
   const [editingItem, setEditingItem] = useState(null);
   const [editValue, setEditValue] = useState('');
+  const [showList, setShowList] = useState(true); // State to control visibility of the list
 
   const generateBarcode = (text) => {
     const canvas = document.createElement('canvas');
@@ -45,6 +46,10 @@ const ManageItem = () => {
     setItems(updatedItems);
   };
 
+  const toggleListVisibility = () => {
+    setShowList(!showList);
+  };
+
   return (
     <div className="manage-item-container">
       <h2>Manage Items</h2>
@@ -57,31 +62,36 @@ const ManageItem = () => {
         />
         <button onClick={handleAddItem} className="add-button">Add Item</button>
       </div>
-      <ul className="item-list">
-        {items.map((item, index) => (
-          <li key={index} className="item">
-            {editingItem === index ? (
-              <div className="edit-container">
-                <input
-                  type="text"
-                  value={editValue}
-                  onChange={(e) => setEditValue(e.target.value)}
-                />
-                <button onClick={() => handleSaveEdit(index)} className="save-button">Save</button>
+      <button onClick={toggleListVisibility} className="toggle-button">
+        {showList ? 'Hide List' : 'Show List'}
+      </button>
+      {showList && (
+        <ul className="item-list">
+          {items.map((item, index) => (
+            <li key={index} className="item">
+              {editingItem === index ? (
+                <div className="edit-container">
+                  <input
+                    type="text"
+                    value={editValue}
+                    onChange={(e) => setEditValue(e.target.value)}
+                  />
+                  <button onClick={() => handleSaveEdit(index)} className="save-button">Save</button>
+                </div>
+              ) : (
+                <>
+                  <span className="item-text">{item.text}</span>
+                  <img src={item.barcode} alt="Barcode" className="barcode-image" />
+                </>
+              )}
+              <div className="item-actions">
+                <button onClick={() => handleEditItem(index)} className="edit-button">Edit</button>
+                <button onClick={() => handleDeleteItem(index)} className="delete-button">Delete</button>
               </div>
-            ) : (
-              <>
-                <span className="item-text">{item.text}</span>
-                <img src={item.barcode} alt="Barcode" className="barcode-image" />
-              </>
-            )}
-            <div className="item-actions">
-              <button onClick={() => handleEditItem(index)} className="edit-button">Edit</button>
-              <button onClick={() => handleDeleteItem(index)} className="delete-button">Delete</button>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

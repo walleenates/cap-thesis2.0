@@ -36,7 +36,7 @@ const RequestForm = () => {
             onChange={(e) => setFile(e.target.files[0])}
           />
         </div>
-        <button type="submit" className="submit-button">Submit Request</button>
+        <center ><button type="submit" className="submit-button">Submit Request</button></center>
       </form>
     </div>
   );

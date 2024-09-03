@@ -1,7 +1,5 @@
-/* ManageUser.css */
-
 .manage-user-container {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f7f7f7;
@@ -20,18 +18,20 @@ h2 {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
+  max-width: 500px; /* Set a max-width for the form */
+  margin: 0 auto; /* Center the form */
 }
 
 .user-form input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
+  padding: 8px; /* Reduced padding */
+  font-size: 14px; /* Reduced font size */
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 .user-form button {
-  padding: 10px;
-  font-size: 16px;
+  padding: 8px 16px; /* Reduced padding */
+  font-size: 14px; /* Reduced font size */
   background-color: #007bff;
   color: white;
   border: none;
@@ -44,6 +44,27 @@ h2 {
   background-color: #0056b3;
 }
 
+.department-toggle {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.department-toggle button {
+  padding: 8px 12px; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #660809;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.department-toggle button.active {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
 .user-list {
   list-style: none;
   padding: 0;
@@ -51,47 +72,55 @@ h2 {
 
 .user-list li {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.user-list li:last-child {
-  border-bottom: none;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fafafa;
 }
 
 .user-list span {
-  flex-grow: 1;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
 }
 
 .user-list button {
-  margin-left: 10px;
+  margin-right: 5px;
   padding: 5px 10px;
-  font-size: 14px;
-  background-color: #28a745;
-  color: white;
+  font-size: 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  background-color: #c0bdbd;
+  border-color: black;
 }
 
-.user-list button:hover {
-  background-color: #218838;
+.user-list button.edit {
+  background-color: #28a745; /* Green color for edit/save */
+  color: white;
 }
 
-.user-list button:nth-child(3) {
-  background-color: #dc3545;
+.user-list button.edit:hover {
+  background-color: #218838; /* Darker green for hover effect */
 }
 
-.user-list button:nth-child(3):hover {
-  background-color: #c82333;
+.user-list button.delete {
+  background-color: #660809; /* Red color for delete */
+  color: white;
+}
+
+.user-list button.delete:hover {
+  background-color: #c82333; /* Darker red for hover effect */
 }
 
 @media (max-width: 480px) {
   .user-form {
     flex-direction: column;
+    max-width: 100%; /* Make form width responsive */
   }
 
   .user-list li {
