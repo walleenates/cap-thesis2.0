@@ -12,11 +12,14 @@ function SignIn({ onLogin }) {
   
 
 
-  const handleSubmit =  () => {
-    console.log(email)
+  const handleSubmit =  async () => {
+    
      if(email && password){
-      handleLogin(email, password)
-      navigate('/')
+      const loggedIN = await handleLogin(email, password)
+      console.log(email)
+      if(loggedIN){
+        navigate('/')
+      }
      } else {
       console.log('PLease fill in fields')
      }

@@ -8,6 +8,7 @@ import AdminDashboard from './dashboard';
 import ManageUser from './ManageUser';
 import ManageItem from './components/ManageItem';
 import HomePage from './pages/HomePage';
+import { auth } from './firebase';
 
 
 
@@ -15,16 +16,8 @@ import HomePage from './pages/HomePage';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
+  const {currentUser} = auth
 
-  const handleLogin = (name) => {
-    setIsLoggedIn(true);
-    setUserName(name);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserName('');
-  };
 
   return (
     <div className="App">
@@ -33,7 +26,7 @@ function App() {
         <Routes>
           <Route 
             path="/" 
-            element={isLoggedIn ? (
+            element={currentUser && currentUser ? (
               <HomePage />
             ) : (
               <Navigate to="/signin" />
@@ -41,7 +34,7 @@ function App() {
           />
           <Route 
             path="/signin" 
-            element={<SignIn onLogin={handleLogin} />} 
+            element={<SignIn  />} 
           />
           <Route 
             path="/signup" 
@@ -53,15 +46,15 @@ function App() {
           />
           <Route 
             path="/dashboard" 
-            element={isLoggedIn ? (
-              <AdminDashboard handleLogout={handleLogout} />
+            element={currentUser ? (
+              <AdminDashboard />
             ) : (
               <Navigate to="/signin" />
             )}
           />
           <Route 
             path="/manage-item" 
-            element={isLoggedIn ? (
+            element={currentUser ? (
               <ManageItem />
             ) : (
               <Navigate to="/signin" />
@@ -69,7 +62,7 @@ function App() {
           />
           <Route 
             path="/manage-user" 
-            element={isLoggedIn ? (
+            element={currentUser ? (
               <ManageUser />
             ) : (
               <Navigate to="/signin" />

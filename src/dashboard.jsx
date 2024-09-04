@@ -29,7 +29,7 @@ const AdminDashboard = ({ userName }) => {
               {dropdownOpen && (
                 <div className="dropdown-menu">
                   <Link to="/account-settings">Account Settings</Link>
-                  <button onClick={handleLogout}>Logout</button>
+                  <button onClick={() => handleLogout()}>Logout</button>
                 </div>
               )}
             </div>

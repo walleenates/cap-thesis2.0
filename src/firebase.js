@@ -28,7 +28,7 @@ export const auth = getAuth(app);
 
 export const handleLogin = (email, password) => {
     try{
-        signInWithEmailAndPassword(auth, {email, password})
+        signInWithEmailAndPassword(auth, email, password)
     }catch(error){
         console.log('Error in:', error.message)
     }
