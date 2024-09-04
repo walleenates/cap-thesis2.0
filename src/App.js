@@ -1,6 +1,6 @@
 import './App.css';
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignIn from './signin';
 import SignUp from './signup';
 import ForgotPassword from './ForgotPassword';
@@ -14,23 +14,18 @@ import { auth } from './firebase';
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState('');
+  
   const {currentUser} = auth
 
 
   return (
     <div className="App">
-    {userName}
+  
       <Router>
         <Routes>
           <Route 
             path="/" 
-            element={currentUser && currentUser ? (
-              <HomePage />
-            ) : (
-              <Navigate to="/signin" />
-            )}
+            element={<AdminDashboard /> }
           />
           <Route 
             path="/signin" 
@@ -46,27 +41,21 @@ function App() {
           />
           <Route 
             path="/dashboard" 
-            element={currentUser ? (
+            element={currentUser && 
               <AdminDashboard />
-            ) : (
-              <Navigate to="/signin" />
-            )}
+           }
           />
           <Route 
             path="/manage-item" 
-            element={currentUser ? (
+            element={currentUser && (
               <ManageItem />
-            ) : (
-              <Navigate to="/signin" />
-            )}
+            ) }
           />
           <Route 
             path="/manage-user" 
-            element={currentUser ? (
+            element={currentUser && (
               <ManageUser />
-            ) : (
-              <Navigate to="/signin" />
-            )}
+            ) }
           />
         </Routes>
       </Router>

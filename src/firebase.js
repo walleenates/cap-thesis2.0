@@ -26,7 +26,7 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 
-export const handleLogin = (email, password) => {
+export const LoginUser = (email, password) => {
     try{
         signInWithEmailAndPassword(auth, email, password)
     }catch(error){

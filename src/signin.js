@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, handleLogin } from './firebase';
+import { auth, LoginUser } from './firebase';
 
 
 function SignIn({ onLogin }) {
+  const {currentUser} = auth
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState();
   const navigate = useNavigate();
 
   
@@ -15,11 +16,13 @@ function SignIn({ onLogin }) {
   const handleSubmit =  async () => {
     
      if(email && password){
-      const loggedIN = await handleLogin(email, password)
+      const loggedIN = LoginUser(email, password)
       console.log(email)
       if(loggedIN){
         navigate('/')
+        return loggedIN
       }
+      console.log('wala na log in')
      } else {
       console.log('PLease fill in fields')
      }
@@ -27,9 +30,12 @@ function SignIn({ onLogin }) {
 
 
 
-  if(auth.currentUser){
-    navigate('/')
-  }
+  useEffect(() => {
+    if(currentUser && currentUser){
+      console.log('ahahah')
+      navigate('/')
+    }
+  },[currentUser, navigate])
 
   return (
     <div className="signin-container">
@@ -43,8 +49,9 @@ function SignIn({ onLogin }) {
       </div>
 
       <div className="signin-right">
+        {currentUser && currentUser.email}
         <h2>Sign In</h2>
-        <form className="signin-form" onSubmit={handleSubmit}>
+        <form className="signin-form">
           <div className="form-group">
             <label htmlFor="email"></label>
             <input 
@@ -66,14 +73,14 @@ function SignIn({ onLogin }) {
               placeholder="Enter your password" 
               value={password} 
               onChange={(e) => setPassword(e.target.value)} 
-              required 
+               
             />
           </div>
           <div className="form-actions">
             <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
             <a href="/signup" className="signup"></a>
           </div>
-          <center><button type="submit" className="login-button">Login</button></center>
+          <center><button type="submit" className="login-button" onClick={() => handleSubmit()}>Login</button></center>
           <div className="or-container">
             <span>or</span>
           </div>

@@ -6,8 +6,11 @@ import ManageItem from '../components/ManageItem';
 import RequestForm from '../components/RequestForm';
 import Reports from '../components/Reports';
 import '../pages/HomePage.css';
+import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+  const {currentUser} = auth
   const [activeComponent, setActiveComponent] = useState('dashboard');
   const [selectedCollege, setSelectedCollege] = useState('CCS');
   const [file, setFile] = useState(null);
@@ -15,6 +18,7 @@ const HomePage = () => {
   const [uploadError, setUploadError] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(null);
   const [fileList, setFileList] = useState([]);
+  const navigate = useNavigate()
 
   const storage = getStorage();
 
@@ -75,6 +79,14 @@ const HomePage = () => {
       setUploadError('Failed to fetch file list. Please try again.');
     }
   };
+
+  useEffect(() => {
+    if(currentUser && currentUser.email){
+      console.log(currentUser.email)
+    } else {
+      navigate('/signin')
+    }
+  },[currentUser, navigate])
 
   return (
     <div className='home-page-container'>

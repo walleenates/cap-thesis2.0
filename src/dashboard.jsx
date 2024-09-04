@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser } from './firebase';
+import { auth, logoutUser } from './firebase';
 
 const AdminDashboard = ({ userName }) => {
+  const {currentUser} = auth
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const handleLogout = () => {
-    logoutUser()
-    navigate('/signin');
+    if(currentUser && currentUser.email){
+      logoutUser()
+      navigate('/signin');
+    }
   };
 
   return (
